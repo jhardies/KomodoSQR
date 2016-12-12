@@ -1,0 +1,829 @@
+# UDL lexer for SQR.
+#
+# Note: UDL is a state machine and it uses regular expressions to move between
+#       the different language states.
+#
+
+language SQR
+
+################ Boilerplate ################
+
+# Boilerplate - need to start with family set to markup and IN_M_DEFAULT state,
+# we'll later perform a null-transition change to get into the SSL state.
+family markup
+initial IN_M_DEFAULT
+# Null-transition to get into SSL state
+state IN_M_DEFAULT:
+/./ : redo, => IN_SSL_DEFAULT
+
+################ Language Start ################
+
+family ssl # server side language
+
+# Specify the min and max styles we'll be referring to.
+start_style SSL_DEFAULT
+end_style SSL_VARIABLE
+
+# If the language has keywords, specify which style needs to be transformed
+keyword_style SSL_IDENTIFIER => SSL_WORD
+keywords [
+        # Keywords
+'#DEBUG'
+'#DEFINE'
+'#ELSE'
+'#END-IF'
+'#ENDIF'
+'#IF'
+'#IFDEF'
+'#IFNDEF'
+'#INCLUDE'
+'ACCESS'
+'ADD'
+'ALL'
+'ALTER'
+'ALTER-COLOR-MAP'
+'ALTER-LOCALE'
+'ALTER-PRINTER'
+'ALTER-REPORT'
+'AND'
+'ANY'
+'ARRAY-ADD'
+'ARRAY-DIVIDE'
+'ARRAY-MULTIPLY'
+'ARRAY-SUBTRACT'
+'AS'
+'ASC'
+'ASK'
+'AUDIT'
+'BEGIN-DOCUMENT'
+'BEGIN-EXECUTE'
+'BEGIN-FOOTING'
+'BEGIN-HEADING'
+'BEGIN-PROCEDURE'
+'BEGIN-PROGRAM'
+'BEGIN-SELECT'
+'BEGIN-SETUP'
+'BEGIN-SQL'
+'BREAK'
+'BETWEEN'
+'BY'
+'CALL'
+'CHAR'
+'CHECK'
+'CLEAR-ARRAY'
+'CLOSE'
+'CLUSTER'
+'COLUMN'
+'COLUMNS'
+'COLUMN_VALUE'
+'COMMENT'
+'COMMIT'
+'COMPRESS'
+'CONCAT'
+'CONNECT'
+'CREATE'
+'CREATE-ARRAY'
+'CREATE-COLOR-PALETTE'
+'CURRENT'
+'DATE'
+'DECIMAL'
+'DECLARE-CHART'
+'DECLARE-COLOR-MAP'
+'DECLARE-CONNECTION'
+'DECLARE-IMAGE'
+'DECLARE-LAYOUT'
+'DECLARE-PRINTER'
+'DECLARE-PROCEDURE'
+'DECLARE-REPORT'
+'DECLARE-TOC'
+'DECLARE-VARIABLE'
+'DEFAULT'
+'DELETE'
+'DESC'
+'DISPLAY'
+'DISTINCT'
+'DIVIDE'
+'DO'
+'DROP'
+'END-DECLARE'
+'END-DOCUMENT'
+'END-EVALUATE'
+'END-EXECUTE'
+'END-FOOTING'
+'END-HEADING'
+'END-IF'
+'END-PROCEDURE'
+'END-PROGRAM'
+'END-SELECT'
+'END-SETUP'
+'END-SQL'
+'END-WHILE'
+'ELSE'
+'ENCODE'
+'EVALUATE'
+'EXCLUSIVE'
+'#EXECUTE'
+'EXISTS'
+'EXIT-SELECT'
+'EXTRACT'
+'FILE'
+'FIND'
+'FLOAT'
+'FOR'
+'FROM'
+'GET'
+'GET-COLOR'
+'GOTO'
+'GRANT'
+'GRAPHIC'
+'BOX'
+'HORZ-LINE'
+'VERT-LINE'
+'GROUP'
+'HAVING'
+'IDENTIFIED'
+'IF'
+'IMMEDIATE'
+'IN'
+'INCREMENT'
+'INDEX'
+'INITIAL'
+'INPUT'
+'INSERT'
+'INTEGER'
+'INTERSECT'
+'INTO'
+'IS'
+'LAST-PAGE'
+'LET'
+'ABS'
+'ACOS'
+'ASIN'
+'ATAN'
+'CEIL'
+'COS'
+'COSh'
+'DEG'
+'E10'
+'EXP'
+'FLOOR'
+'LOG'
+'LOG10'
+'MOD'
+'POWER'
+'RAD'
+'ROUND'
+'SIGN'
+'SIN'
+'SINH'
+'SQRT'
+'TAN'
+'TANH'
+'TRUNC'
+'ARRAY'
+'ASCII'
+'ASCIIC'
+'CHR'
+'COND'
+'DATEADD'
+'DATEDIFF'
+'DATENOW'
+'DATETOSTR'
+'EDIT'
+'GETENV'
+'INSTR'
+'INSTRB'
+'ISBLANK'
+'ISNULL'
+'LENGTH'
+'LENGTHB'
+'LENGTHP'
+'LENGTHT'
+'LOWER'
+'LPAD'
+'LTRIM'
+'NVL'
+'RANGE'
+'REPLACE'
+'ROMAN'
+'RPAD'
+'RTRIM'
+'STRTODATE'
+'SUBSTR'
+'SUBSTRB'
+'SUBSTRP'
+'SUBSTRT'
+'TO_CHAR'
+'TO_MULTI_BYTE'
+'TO_NUMBER'
+'TO_SINGLE_BYTE'
+'TRANSLATE'
+'TRANSFORM'
+'UNICODE'
+'UPPER'
+'WRAPDEPTH'
+'LEVEL'
+'LIKE'
+'LOAD-LOOKUP'
+'LOCK'
+'LONG'
+'LOOKUP'
+'LOWERCASE'
+'MAXEXTENTS'
+'MBTOSBS'
+'MINUS'
+'MLSLABEL'
+'MODE'
+'MODIFY'
+'MOVE'
+'MULTIPLY'
+'NESTED_TABLE_ID'
+'NEW-PAGE'
+'NEW-REPORT'
+'NEXT-COLUMN'
+'NEXT-LISTING'
+'NOAUDIT'
+'NOCOMPRESS'
+'NOT'
+'NOWAIT'
+'NULL'
+'NUMBER'
+'OF'
+'OFFLINE'
+'ON'
+'ONLINE'
+'OPEN'
+'OPTION'
+'OR'
+'ORDER'
+'PAGE-NUMBER'
+'PCTFREE'
+'POSITION'
+'PRINT'
+'BOX'
+'CENTER'
+'DATE'
+'EDIT'
+'MONEY'
+'NOP'
+'NUMBER'
+'ON-BREAK'
+'UNDERLINE'
+'WRAP'
+'PRINT-BAR-CODE'
+'PRINT-CHART'
+'PRINT-DIRECT'
+'PRINT-IMAGE'
+'PRIOR'
+'PRIVILEGES'
+'PUBLIC'
+'PUT'
+'RAW'
+'READ'
+'RENAME'
+'RESOURCE'
+'REVOKE'
+'ROLLBACK'
+'ROW'
+'ROWID'
+'ROWNUM'
+'ROWS'
+'SBTOMBS'
+'SECURITY'
+'SELECT'
+'SESSION'
+'SET'
+'SET-COLOR'
+'SET-GENERATIONS'
+'SET-LEVELS'
+'SET-MEMBERS'
+'SHOW'
+'SHARE'
+'SIZE'
+'SMALLINT'
+'START'
+'STOP'
+'STRING'
+'SUBTRACT'
+'SUCCESSFUL'
+'SYNONYM'
+'SYSDATE'
+'SYSTEM'
+'TABLE'
+'THEN'
+'TO'
+'TOC-ENTRY'
+'TRIGGER'
+'UID'
+'UNION'
+'UNIQUE'
+'UNSTRING'
+'UPDATE'
+'UPPERCASE'
+'USE'
+'USE-COLUMN'
+'USE-PRINTER-TYPE'
+'USE-PROCEDURE'
+'USE-REPORT'
+'USER'
+'USING'
+'VALIDATE'
+'VALUES'
+'VARCHAR'
+'VARCHAR2'
+'VIEW'
+'WHEN'
+'WHEN-OTHER'
+'WHENEVER'
+'WHERE'
+'WHILE'
+'WITH'
+'WRITE'
+'#debug'
+'#define'
+'#else'
+'#end-if'
+'#endif'
+'#if'
+'#ifdef'
+'#ifndef'
+'#include'
+'access'
+'add'
+'all'
+'alter'
+'alter-color-map'
+'alter-locale'
+'alter-printer'
+'alter-report'
+'and'
+'any'
+'array-add'
+'array-divide'
+'array-multiply'
+'array-subtract'
+'as'
+'asc'
+'ask'
+'audit'
+'begin-document'
+'begin-execute'
+'begin-footing'
+'begin-heading'
+'begin-procedure'
+'begin-program'
+'begin-select'
+'begin-setup'
+'begin-sql'
+'break'
+'between'
+'by'
+'call'
+'char'
+'check'
+'clear-array'
+'close'
+'cluster'
+'column'
+'columns'
+'column_value'
+'comment'
+'commit'
+'compress'
+'concat'
+'connect'
+'create'
+'create-array'
+'create-color-palette'
+'current'
+'date'
+'decimal'
+'declare-chart'
+'declare-color-map'
+'declare-connection'
+'declare-image'
+'declare-layout'
+'declare-printer'
+'declare-procedure'
+'declare-report'
+'declare-toc'
+'declare-variable'
+'default'
+'delete'
+'desc'
+'display'
+'distinct'
+'divide'
+'do'
+'drop'
+'end-declare'
+'end-document'
+'end-evaluate'
+'end-execute'
+'end-footing'
+'end-heading'
+'end-if'
+'end-procedure'
+'end-program'
+'end-select'
+'end-setup'
+'end-sql'
+'end-while'
+'else'
+'encode'
+'evaluate'
+'exclusive'
+'#execute'
+'exists'
+'exit-select'
+'extract'
+'file'
+'find'
+'float'
+'for'
+'from'
+'get'
+'get-color'
+'goto'
+'grant'
+'graphic'
+'box'
+'horz-line'
+'vert-line'
+'group'
+'having'
+'identified'
+'if'
+'immediate'
+'in'
+'increment'
+'index'
+'initial'
+'input'
+'insert'
+'integer'
+'intersect'
+'into'
+'is'
+'last-page'
+'let'
+'abs'
+'acos'
+'asin'
+'atan'
+'ceil'
+'cos'
+'cosh'
+'deg'
+'e10'
+'exp'
+'floor'
+'log'
+'log10'
+'mod'
+'power'
+'rad'
+'round'
+'sign'
+'sin'
+'sinh'
+'sqrt'
+'tan'
+'tanh'
+'trunc'
+'array'
+'ascii'
+'asciic'
+'chr'
+'cond'
+'dateadd'
+'datediff'
+'datenow'
+'datetostr'
+'edit'
+'getenv'
+'instr'
+'instrb'
+'isblank'
+'isnull'
+'length'
+'lengthb'
+'lengthp'
+'lengtht'
+'lower'
+'lpad'
+'ltrim'
+'nvl'
+'range'
+'replace'
+'roman'
+'rpad'
+'rtrim'
+'strtodate'
+'substr'
+'substrb'
+'substrp'
+'substrt'
+'to_char'
+'to_multi_byte'
+'to_number'
+'to_single_byte'
+'translate'
+'transform'
+'unicode'
+'upper'
+'wrapdepth'
+'level'
+'like'
+'load-lookup'
+'lock'
+'long'
+'lookup'
+'lowercase'
+'maxextents'
+'mbtosbs'
+'minus'
+'mlslabel'
+'mode'
+'modify'
+'move'
+'multiply'
+'nested_table_id'
+'new-page'
+'new-report'
+'next-column'
+'next-listing'
+'noaudit'
+'nocompress'
+'not'
+'nowait'
+'null'
+'number'
+'of'
+'offline'
+'on'
+'online'
+'open'
+'option'
+'or'
+'order'
+'page-number'
+'pctfree'
+'position'
+'print'
+'box'
+'center'
+'date'
+'edit'
+'money'
+'nop'
+'number'
+'on-break'
+'underline'
+'wrap'
+'print-bar-code'
+'print-chart'
+'print-direct'
+'print-image'
+'prior'
+'privileges'
+'public'
+'put'
+'raw'
+'read'
+'rename'
+'resource'
+'revoke'
+'rollback'
+'row'
+'rowid'
+'rownum'
+'rows'
+'sbtombs'
+'security'
+'select'
+'session'
+'set'
+'set-color'
+'set-generations'
+'set-levels'
+'set-members'
+'show'
+'share'
+'size'
+'smallint'
+'start'
+'stop'
+'string'
+'subtract'
+'successful'
+'synonym'
+'sysdate'
+'system'
+'table'
+'then'
+'to'
+'toc-entry'
+'trigger'
+'uid'
+'union'
+'unique'
+'unstring'
+'update'
+'uppercase'
+'use'
+'use-column'
+'use-printer-type'
+'use-procedure'
+'use-report'
+'user'
+'using'
+'validate'
+'values'
+'varchar'
+'varchar2'
+'view'
+'when'
+'when-other'
+'whenever'
+'where'
+'while'
+'with'
+'write'
+
+        ]
+
+# Set the basic patterns we'll be using for styling transitions.
+# For most programming languages, names cannot start with a number, but they
+# often allow a number after the first character - e.g. "bar21a"
+pattern FIRSTNAMECHAR = '#\$_a-zA-Z\x80-\xff' # names (identifier, keyword, variable...) only can start with these chars
+pattern NAMECHAR = '\-_a-zA-Z\x80-\xff\d'      # rest of the name, after the first char
+pattern WS = '\s\t\r\n'                    # whitespace
+pattern OP = '!#%&\(\)\*\+,-\.\/:;<=>\?@\[\]\^\{\}~|'  # operator characters - escaping special regex values
+
+################ Default Style ################
+
+# Define what happens when in default (initial) state. This is where we set up
+# the transitions to other states.
+state IN_SSL_DEFAULT:
+
+# ----------- Entering Comments ---------- #
+
+# C-style one line comments
+#'//' : paint(upto, SSL_DEFAULT),  => IN_SSL_COMMENT_TO_EOL
+
+# Hash-style one line comments
+#'#' : paint(upto, SSL_DEFAULT),  => IN_SSL_COMMENT_TO_EOL
+
+# SQL-style one line comments
+#'--' : paint(upto, SSL_DEFAULT),  => IN_SSL_COMMENT_TO_EOL
+'!' : paint(upto, SSL_DEFAULT),  => IN_SSL_COMMENT_TO_EOL
+
+# Lisp-style one line comments
+#';' : paint(upto, SSL_DEFAULT),  => IN_SSL_COMMENT_TO_EOL
+
+# Erlang-style one line comments
+#'%' : paint(upto, SSL_DEFAULT),  => IN_SSL_COMMENT_TO_EOL
+
+# C-style block comments
+#'/*' : paint(upto, SSL_DEFAULT), => IN_SSL_COMMENT_C_BLOCK
+
+# Pascal-style block comments
+#'(*' : paint(upto, SSL_DEFAULT), => IN_SSL_COMMENT_PASCAL_BLOCK
+
+# ----------- Entering Whitespace ---------- #
+
+# Just stay in whatever style we currently are using.
+/[$WS]+/  : #stay
+
+# ----------- Entering Strings ---------- #
+
+'"' : paint(upto, SSL_DEFAULT), => IN_SSL_DSTRING
+'\'' : paint(upto, SSL_DEFAULT), => IN_SSL_SSTRING
+'`' : paint(upto, SSL_DEFAULT), => IN_SSL_XSTRING
+
+# ----------- Entering Numbers ---------- #
+
+# Go process a number, try to do it in regexes octal and hex first.
+/0[Xx][0-9a-fA-F]+/ : paint(upto, SSL_DEFAULT), paint(include, SSL_NUMBER)  # Hex numbers
+/[-+]?0[0-7]*/ : paint(upto, SSL_DEFAULT), paint(include, SSL_NUMBER)       # Octal numbers
+/[-+]?[1-9]+/ : paint(upto, SSL_DEFAULT), paint(include, SSL_NUMBER)        # Regular numbers
+
+# ----------- Entering Identifiers ---------- #
+
+#The following doesn't work for some reason
+/#(debug|DEBUG)[0-9a-zA-Z]{0,10}/ : paint(upto, SSL_DEFAULT), paint(include, SSL_WORD)
+
+/[$FIRSTNAMECHAR][$NAMECHAR]*/ : paint(upto, SSL_DEFAULT), paint(include, SSL_IDENTIFIER)
+
+# ----------- Entering Operators ---------- #
+
+/[$OP]/ : paint(upto, SSL_DEFAULT), paint(include, SSL_OPERATOR)
+
+
+################ In Comments - determines how we exit a comment ################
+
+state IN_SSL_COMMENT_TO_EOL: 
+/[\r\n]/ : paint(upto, SSL_COMMENT), => IN_SSL_DEFAULT  # back to default state
+
+state IN_SSL_COMMENT_C_BLOCK: 
+'*/' : paint(include, SSL_COMMENTBLOCK), => IN_SSL_DEFAULT  # back to default state
+
+state IN_SSL_COMMENT_PASCAL_BLOCK: 
+'*)' : paint(include, SSL_COMMENTBLOCK), => IN_SSL_DEFAULT  # back to default state
+
+################ In Strings - determines how we exit a string ################
+
+state IN_SSL_DSTRING:
+'"' : paint(include, SSL_STRING), => IN_SSL_DEFAULT  # back to default state
+#/\\./ : #stay, anything escaped means it's still a string
+
+state IN_SSL_SSTRING:
+'\'' : paint(include, SSL_STRING), => IN_SSL_DEFAULT  # back to default state
+#/\\./ : #stay, anything escaped means it's still a string
+
+state IN_SSL_XSTRING:
+'`' : paint(include, SSL_STRING), => IN_SSL_DEFAULT  # back to default state
+#/\\./ : #stay, anything escaped means it's still a string
+
+################ End of State Handling ################
+
+
+################ Fold Handling ################
+
+# Uncomment to enable folding on "{" and "}"
+
+#fold "{" SSL_OPERATOR +
+#fold "}" SSL_OPERATOR -
+fold "#IF" SSL_WORD +
+fold "#ELSE" SSL_WORD +
+fold "#IFDEF" SSL_WORD +
+fold "#IFNDEF" SSL_WORD +
+fold "BEGIN-DOCUMENT" SSL_WORD +
+fold "BEGIN-EXECUTE" SSL_WORD +
+fold "BEGIN-FOOTING" SSL_WORD +
+fold "BEGIN-HEADING" SSL_WORD +
+fold "BEGIN-PROCEDURE" SSL_WORD +
+fold "BEGIN-PROGRAM" SSL_WORD +
+fold "BEGIN-SELECT" SSL_WORD +
+fold "BEGIN-SETUP" SSL_WORD +
+fold "BEGIN-SQL" SSL_WORD +
+fold "DECLARE-CHART" SSL_WORD +
+fold "DECLARE-COLOR-MAP" SSL_WORD +
+fold "DECLARE-CONNECTION" SSL_WORD +
+fold "DECLARE-IMAGE" SSL_WORD +
+fold "DECLARE-LAYOUT" SSL_WORD +
+fold "DECLARE-PRINTER" SSL_WORD +
+fold "DECLARE-PROCEDURE" SSL_WORD +
+fold "DECLARE-REPORT" SSL_WORD +
+fold "DECLARE-TOC" SSL_WORD +
+fold "DECLARE-VARIABLE" SSL_WORD +
+fold "#if" SSL_WORD +
+fold "#ifdef" SSL_WORD +
+fold "#ifndef" SSL_WORD +
+fold "begin-document" SSL_WORD +
+fold "begin-execute" SSL_WORD +
+fold "begin-footing" SSL_WORD +
+fold "begin-heading" SSL_WORD +
+fold "begin-procedure" SSL_WORD +
+fold "begin-program" SSL_WORD +
+fold "begin-select" SSL_WORD +
+fold "begin-setup" SSL_WORD +
+fold "begin-sql" SSL_WORD +
+fold "declare-chart" SSL_WORD +
+fold "declare-color-map" SSL_WORD +
+fold "declare-connection" SSL_WORD +
+fold "declare-image" SSL_WORD +
+fold "declare-layout" SSL_WORD +
+fold "declare-printer" SSL_WORD +
+fold "declare-procedure" SSL_WORD +
+fold "declare-report" SSL_WORD +
+fold "declare-toc" SSL_WORD +
+fold "declare-variable" SSL_WORD +
+
+fold "end-declare" SSL_WORD -
+fold "end-document" SSL_WORD -
+fold "end-evaluate" SSL_WORD -
+fold "end-execute" SSL_WORD -
+fold "end-footing" SSL_WORD -
+fold "end-heading" SSL_WORD -
+fold "end-if" SSL_WORD -
+fold "end-procedure" SSL_WORD -
+fold "end-program" SSL_WORD -
+fold "end-select" SSL_WORD -
+fold "end-setup" SSL_WORD -
+fold "end-sql" SSL_WORD -
+fold "END-DECLARE" SSL_WORD -
+fold "END-DOCUMENT" SSL_WORD -
+fold "END-EVALUATE" SSL_WORD -
+fold "END-EXECUTE" SSL_WORD -
+fold "END-FOOTING" SSL_WORD -
+fold "END-HEADING" SSL_WORD -
+fold "END-IF" SSL_WORD -
+fold "END-PROCEDURE" SSL_WORD -
+fold "END-PROGRAM" SSL_WORD -
+fold "END-SELECT" SSL_WORD -
+fold "END-SETUP" SSL_WORD -
+fold "END-SQL" SSL_WORD -
+
+################ End of Fold Handling ################

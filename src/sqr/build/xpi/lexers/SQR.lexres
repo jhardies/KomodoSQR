@@ -1,0 +1,418 @@
+1:lexer resource
+2:1
+3:2
+4:0
+48:1:2:0
+11:3
+12:SQR
+13
+14:0:0
+16:0:5
+15:0:1
+14:1:15
+16:1:21
+15:1:0
+14:2:22
+16:2:29
+15:2:0
+14:3:31
+16:3:46
+15:3:2
+14:4:49
+16:4:56
+15:4:0
+17:69
+18:0
+19:1
+18:3
+19:0
+11:4957
+12:#DEBUG #DEFINE #ELSE #END-IF #ENDIF #EXECUTE #IF #IFDEF #IFNDEF #INCLUDE #d
+12:ebug #define #else #end-if #endif #execute #if #ifdef #ifndef #include ABS 
+12:ACCESS ACOS ADD ALL ALTER ALTER-COLOR-MAP ALTER-LOCALE ALTER-PRINTER ALTER-
+12:REPORT AND ANY ARRAY ARRAY-ADD ARRAY-DIVIDE ARRAY-MULTIPLY ARRAY-SUBTRACT A
+12:S ASC ASCII ASCIIC ASIN ASK ATAN AUDIT BEGIN-DOCUMENT BEGIN-EXECUTE BEGIN-F
+12:OOTING BEGIN-HEADING BEGIN-PROCEDURE BEGIN-PROGRAM BEGIN-SELECT BEGIN-SETUP
+12: BEGIN-SQL BETWEEN BOX BOX BREAK BY CALL CEIL CENTER CHAR CHECK CHR CLEAR-A
+12:RRAY CLOSE CLUSTER COLUMN COLUMNS COLUMN_VALUE COMMENT COMMIT COMPRESS CONC
+12:AT COND CONNECT COS COSh CREATE CREATE-ARRAY CREATE-COLOR-PALETTE CURRENT D
+12:ATE DATE DATEADD DATEDIFF DATENOW DATETOSTR DECIMAL DECLARE-CHART DECLARE-C
+12:OLOR-MAP DECLARE-CONNECTION DECLARE-IMAGE DECLARE-LAYOUT DECLARE-PRINTER DE
+12:CLARE-PROCEDURE DECLARE-REPORT DECLARE-TOC DECLARE-VARIABLE DEFAULT DEG DEL
+12:ETE DESC DISPLAY DISTINCT DIVIDE DO DROP E10 EDIT EDIT ELSE ENCODE END-DECL
+12:ARE END-DOCUMENT END-EVALUATE END-EXECUTE END-FOOTING END-HEADING END-IF EN
+12:D-PROCEDURE END-PROGRAM END-SELECT END-SETUP END-SQL END-WHILE EVALUATE EXC
+12:LUSIVE EXISTS EXIT-SELECT EXP EXTRACT FILE FIND FLOAT FLOOR FOR FROM GET GE
+12:T-COLOR GETENV GOTO GRANT GRAPHIC GROUP HAVING HORZ-LINE IDENTIFIED IF IMME
+12:DIATE IN INCREMENT INDEX INITIAL INPUT INSERT INSTR INSTRB INTEGER INTERSEC
+12:T INTO IS ISBLANK ISNULL LAST-PAGE LENGTH LENGTHB LENGTHP LENGTHT LET LEVEL
+12: LIKE LOAD-LOOKUP LOCK LOG LOG10 LONG LOOKUP LOWER LOWERCASE LPAD LTRIM MAX
+12:EXTENTS MBTOSBS MINUS MLSLABEL MOD MODE MODIFY MONEY MOVE MULTIPLY NESTED_T
+12:ABLE_ID NEW-PAGE NEW-REPORT NEXT-COLUMN NEXT-LISTING NOAUDIT NOCOMPRESS NOP
+12: NOT NOWAIT NULL NUMBER NUMBER NVL OF OFFLINE ON ON-BREAK ONLINE OPEN OPTIO
+12:N OR ORDER PAGE-NUMBER PCTFREE POSITION POWER PRINT PRINT-BAR-CODE PRINT-CH
+12:ART PRINT-DIRECT PRINT-IMAGE PRIOR PRIVILEGES PUBLIC PUT RAD RANGE RAW READ
+12: RENAME REPLACE RESOURCE REVOKE ROLLBACK ROMAN ROUND ROW ROWID ROWNUM ROWS 
+12:RPAD RTRIM SBTOMBS SECURITY SELECT SESSION SET SET-COLOR SET-GENERATIONS SE
+12:T-LEVELS SET-MEMBERS SHARE SHOW SIGN SIN SINH SIZE SMALLINT SQRT START STOP
+12: STRING STRTODATE SUBSTR SUBSTRB SUBSTRP SUBSTRT SUBTRACT SUCCESSFUL SYNONY
+12:M SYSDATE SYSTEM TABLE TAN TANH THEN TO TOC-ENTRY TO_CHAR TO_MULTI_BYTE TO_
+12:NUMBER TO_SINGLE_BYTE TRANSFORM TRANSLATE TRIGGER TRUNC UID UNDERLINE UNICO
+12:DE UNION UNIQUE UNSTRING UPDATE UPPER UPPERCASE USE USE-COLUMN USE-PRINTER-
+12:TYPE USE-PROCEDURE USE-REPORT USER USING VALIDATE VALUES VARCHAR VARCHAR2 V
+12:ERT-LINE VIEW WHEN WHEN-OTHER WHENEVER WHERE WHILE WITH WRAP WRAPDEPTH WRIT
+12:E abs access acos add all alter alter-color-map alter-locale alter-printer 
+12:alter-report and any array array-add array-divide array-multiply array-subt
+12:ract as asc ascii asciic asin ask atan audit begin-document begin-execute b
+12:egin-footing begin-heading begin-procedure begin-program begin-select begin
+12:-setup begin-sql between box box break by call ceil center char check chr c
+12:lear-array close cluster column column_value columns comment commit compres
+12:s concat cond connect cos cosh create create-array create-color-palette cur
+12:rent date date dateadd datediff datenow datetostr decimal declare-chart dec
+12:lare-color-map declare-connection declare-image declare-layout declare-prin
+12:ter declare-procedure declare-report declare-toc declare-variable default d
+12:eg delete desc display distinct divide do drop e10 edit edit else encode en
+12:d-declare end-document end-evaluate end-execute end-footing end-heading end
+12:-if end-procedure end-program end-select end-setup end-sql end-while evalua
+12:te exclusive exists exit-select exp extract file find float floor for from 
+12:get get-color getenv goto grant graphic group having horz-line identified i
+12:f immediate in increment index initial input insert instr instrb integer in
+12:tersect into is isblank isnull last-page length lengthb lengthp lengtht let
+12: level like load-lookup lock log log10 long lookup lower lowercase lpad ltr
+12:im maxextents mbtosbs minus mlslabel mod mode modify money move multiply ne
+12:sted_table_id new-page new-report next-column next-listing noaudit nocompre
+12:ss nop not nowait null number number nvl of offline on on-break online open
+12: option or order page-number pctfree position power print print-bar-code pr
+12:int-chart print-direct print-image prior privileges public put rad range ra
+12:w read rename replace resource revoke rollback roman round row rowid rownum
+12: rows rpad rtrim sbtombs security select session set set-color set-generati
+12:ons set-levels set-members share show sign sin sinh size smallint sqrt star
+12:t stop string strtodate substr substrb substrp substrt subtract successful 
+12:synonym sysdate system table tan tanh then to to_char to_multi_byte to_numb
+12:er to_single_byte toc-entry transform translate trigger trunc uid underline
+12: unicode union unique unstring update upper uppercase use use-column use-pr
+12:inter-type use-procedure use-report user using validate values varchar varc
+12:har2 vert-line view when when-other whenever where while with wrap wrapdept
+12:h write
+21
+22:45:44
+11:3
+12:#IF
+20:0:44:1
+11:5
+12:#ELSE
+20:1:44:1
+11:6
+12:#IFDEF
+20:2:44:1
+11:7
+12:#IFNDEF
+20:3:44:1
+11:14
+12:BEGIN-DOCUMENT
+20:4:44:1
+11:13
+12:BEGIN-EXECUTE
+20:5:44:1
+11:13
+12:BEGIN-FOOTING
+20:6:44:1
+11:13
+12:BEGIN-HEADING
+20:7:44:1
+11:15
+12:BEGIN-PROCEDURE
+20:8:44:1
+11:13
+12:BEGIN-PROGRAM
+20:9:44:1
+11:12
+12:BEGIN-SELECT
+20:10:44:1
+11:11
+12:BEGIN-SETUP
+20:11:44:1
+11:9
+12:BEGIN-SQL
+20:12:44:1
+11:13
+12:DECLARE-CHART
+20:13:44:1
+11:17
+12:DECLARE-COLOR-MAP
+20:14:44:1
+11:18
+12:DECLARE-CONNECTION
+20:15:44:1
+11:13
+12:DECLARE-IMAGE
+20:16:44:1
+11:14
+12:DECLARE-LAYOUT
+20:17:44:1
+11:15
+12:DECLARE-PRINTER
+20:18:44:1
+11:17
+12:DECLARE-PROCEDURE
+20:19:44:1
+11:14
+12:DECLARE-REPORT
+20:20:44:1
+11:11
+12:DECLARE-TOC
+20:21:44:1
+11:16
+12:DECLARE-VARIABLE
+20:22:44:1
+11:3
+12:#if
+20:23:44:1
+11:6
+12:#ifdef
+20:24:44:1
+11:7
+12:#ifndef
+20:25:44:1
+11:14
+12:begin-document
+20:26:44:1
+11:13
+12:begin-execute
+20:27:44:1
+11:13
+12:begin-footing
+20:28:44:1
+11:13
+12:begin-heading
+20:29:44:1
+11:15
+12:begin-procedure
+20:30:44:1
+11:13
+12:begin-program
+20:31:44:1
+11:12
+12:begin-select
+20:32:44:1
+11:11
+12:begin-setup
+20:33:44:1
+11:9
+12:begin-sql
+20:34:44:1
+11:13
+12:declare-chart
+20:35:44:1
+11:17
+12:declare-color-map
+20:36:44:1
+11:18
+12:declare-connection
+20:37:44:1
+11:13
+12:declare-image
+20:38:44:1
+11:14
+12:declare-layout
+20:39:44:1
+11:15
+12:declare-printer
+20:40:44:1
+11:17
+12:declare-procedure
+20:41:44:1
+11:14
+12:declare-report
+20:42:44:1
+11:11
+12:declare-toc
+20:43:44:1
+11:16
+12:declare-variable
+20:44:44:1
+11:11
+12:end-declare
+20:45:44:-1
+11:12
+12:end-document
+20:46:44:-1
+11:12
+12:end-evaluate
+20:47:44:-1
+11:11
+12:end-execute
+20:48:44:-1
+11:11
+12:end-footing
+20:49:44:-1
+11:11
+12:end-heading
+20:50:44:-1
+11:6
+12:end-if
+20:51:44:-1
+11:13
+12:end-procedure
+20:52:44:-1
+11:11
+12:end-program
+20:53:44:-1
+11:10
+12:end-select
+20:54:44:-1
+11:9
+12:end-setup
+20:55:44:-1
+11:7
+12:end-sql
+20:56:44:-1
+11:11
+12:END-DECLARE
+20:57:44:-1
+11:12
+12:END-DOCUMENT
+20:58:44:-1
+11:12
+12:END-EVALUATE
+20:59:44:-1
+11:11
+12:END-EXECUTE
+20:60:44:-1
+11:11
+12:END-FOOTING
+20:61:44:-1
+11:11
+12:END-HEADING
+20:62:44:-1
+11:6
+12:END-IF
+20:63:44:-1
+11:13
+12:END-PROCEDURE
+20:64:44:-1
+11:11
+12:END-PROGRAM
+20:65:44:-1
+11:10
+12:END-SELECT
+20:66:44:-1
+11:9
+12:END-SETUP
+20:67:44:-1
+11:7
+12:END-SQL
+20:68:44:-1
+32:2
+33:0:40:3
+33:1:31:2
+34:9
+35:1
+11:1
+12:.
+36:2:-1:-1:1:2:0:0:0
+40
+37:3
+35:2
+11:1
+12:!
+36:1:31:-1:0:3:0:0:0
+40
+11:10
+12:[\s	\r\n]+
+36:2:-1:-1:0:-1:0:0:0
+40
+11:1
+12:"
+36:1:31:-1:0:4:0:0:0
+40
+11:1
+12:'
+36:1:31:-1:0:5:0:0:0
+40
+11:1
+12:`
+36:1:31:-1:0:6:0:0:0
+40
+11:17
+12:0[Xx][0-9a-fA-F]+
+36:2:31:42:0:-1:0:0:0
+40
+11:12
+12:[-+]?0[0-7]*
+36:2:31:42:0:-1:0:0:0
+40
+11:11
+12:[-+]?[1-9]+
+36:2:31:42:0:-1:0:0:0
+40
+11:31
+12:#(debug|DEBUG)[0-9a-zA-Z]{0,10}
+36:2:31:44:0:-1:0:0:0
+40
+11:44
+12:[#\$_a-zA-Z\x80-\xff][\-_a-zA-Z\x80-\xff\d]*
+36:2:31:45:0:-1:0:0:0
+40
+11:40
+12:[!#%&\(\)\*\+,-\.\/:;<=>\?@\[\]\^\{\}~|]
+36:2:31:46:0:-1:0:0:0
+40
+11:4
+12:NULL
+36:4:31:-1:0:-1:0:0:0
+41
+35:3
+11:6
+12:[\r\n]
+36:2:40:-1:0:2:0:0:0
+40
+11:4
+12:NULL
+36:4:40:-1:0:-1:0:0:0
+41
+35:4
+11:1
+12:"
+36:1:-1:43:0:2:0:0:0
+40
+11:4
+12:NULL
+36:4:43:-1:0:-1:0:0:0
+41
+35:5
+11:1
+12:'
+36:1:-1:43:0:2:0:0:0
+40
+11:4
+12:NULL
+36:4:43:-1:0:-1:0:0:0
+41
+35:6
+11:1
+12:`
+36:1:-1:43:0:2:0:0:0
+40
+11:4
+12:NULL
+36:4:43:-1:0:-1:0:0:0
+41
+35:7
+11:2
+12:*/
+36:1:-1:41:0:2:0:0:0
+40
+11:4
+12:NULL
+36:4:41:-1:0:-1:0:0:0
+41
+35:8
+11:2
+12:*)
+36:1:-1:41:0:2:0:0:0
+40
+11:4
+12:NULL
+36:4:41:-1:0:-1:0:0:0
+41

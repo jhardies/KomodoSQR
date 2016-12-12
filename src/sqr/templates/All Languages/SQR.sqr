@@ -1,0 +1,67 @@
+!****************************************************************************
+!  FILENAME - File Description                                              *
+!****************************************************************************
+!****************************************************************************
+!                             NEW SQR LOG                                   *
+!                                                                           *
+! DESCRIPTION:                                                              *
+!                                                                           *
+!                                                                           *
+!                                                                           *
+! ASSUMPTION:                                                               *
+!                                                                           *
+! NAVIGATION:                                                               *
+!                                                                           *
+!                                                                           *
+! This is a new SQR module.  This log must be kept up to date.              *
+!****************************************************************************
+! Mod#        Programmer                Start Dt    End Date                *
+! ---------   ----------------------    ----------  ----------              *
+!                                                                           *
+!****************************************************************************
+
+#include 'setenv.sqc'    !Set environment
+
+!**********************************************************************
+begin-setup
+!**********************************************************************
+
+end-setup
+
+!**********************************************************************
+begin-program
+!**********************************************************************
+   #debugB show '+ begin-program'
+
+   do INITIALIZE-PROCESS
+   
+   ! Do Processing Here
+   
+   #debugB show '- begin-program'
+end-program
+
+
+!**********************************************************************
+! INITIALIZE-PROCESS                                                  *
+!                                                                     *
+! This procedure performs the application initializations, formats    *
+! variables for use, and calls the procedures to get input parameters.*
+!**********************************************************************
+begin-procedure INITIALIZE-PROCESS
+   #debugB show '+ INITIALIZE-PROCESS'
+
+   ! Perform initial setup here
+   
+   #debugB show '- INITIALIZE-PROCESS'
+end-procedure
+
+
+!**********************************************************************
+! SQCs                                                                *
+!**********************************************************************
+#include 'curdttim.sqc'  !Get-Current-DateTime procedure
+#include 'datetime.sqc'  !Format-DateTime
+#include 'number.sqc'    !Routines to format numbers
+#include 'stdapi.sqc'    !Update Process API
+#include 'stderror.sqc'  !Error processing
+#include 'uwhcmout.sqc'  !UW ouput file path

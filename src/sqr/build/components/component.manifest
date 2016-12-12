@@ -1,0 +1,4 @@
+category komodo-language SQR @activestate.com/koLanguage?language=SQR;1
+category komodo-language-info SQR %7B%22name%22%3A%20%22SQR%22%2C%20%22defaultExtension%22%3A%20%22.sqr%22%7D
+contract @activestate.com/koLanguage?language=SQR;1 {95f294ad-e4ec-4006-9c38-fd6bdf7527f8}
+component {95f294ad-e4ec-4006-9c38-fd6bdf7527f8} koSQR_UDL_Language.py
